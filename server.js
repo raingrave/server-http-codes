@@ -68,4 +68,18 @@ app.listen(port, () => {
   console.log(`Server testing http://localhost:${port}`)
 })
 
-const requestLog = (request) => console.log(request.method, `${request.headers.host}${request.url}`)
+const requestLog = (request) => {
+  
+  const logData = {
+    method: request.method,
+    host: request.headers.host,
+    url: request.url,
+    userAgent: request.headers['user-agent'],
+    contentType: request.headers['content-type'],
+    contentLength: request.headers['content-length'],
+
+    receiveAt: new Date().toLocaleString()
+  }
+
+  console.log(logData)
+}
